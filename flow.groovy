@@ -1,4 +1,4 @@
-node(‘shared’) {
+node('shared') {
     git url: '/var/lib/jenkins/workflow-plugin-pipeline-demo'
     env.PATH="${tool 'Maven 3.x'}/bin:${env.PATH}"
     stage 'Dev'
@@ -27,7 +27,7 @@ try {
     echo 'Checkpoint feature available in Jenkins Enterprise by CloudBees.'
 }
 stage name: 'Production', concurrency: 1
-node(‘shared’) {
+node('shared') {
     sh 'wget -O - -S http://localhost:8080/staging/'
     unarchive mapping: ['target/x.war' : 'x.war']
     deploy 'x.war', 'production'
